@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
+    <fullyQualifiedTypeName name="org.springframework.jdbc.core.simple.SimpleJdbcInsert"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
+    <fullyQualifiedTypeName name="rupeeseed.models.CommonResponse"/>
+    <fullyQualifiedTypeName name="javax.crypto.SecretKeyFactory"/>
+    <fullyQualifiedTypeName name="java.security.spec.KeySpec"/>
+    <fullyQualifiedTypeName name="java.io.StringWriter"/>
+</qualifiedTypeNameHistroy>

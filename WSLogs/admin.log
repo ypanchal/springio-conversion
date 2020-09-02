@@ -1,0 +1,284 @@
+2020-08-27 10:27:22,849 INFO org.springframework.boot.StartupInfoLogger:50 [restartedMain] Starting RupeeSeedWsBootApplication on YASH-LAPTOP with PID 10648 (C:\Users\YASH\Desktop\spring\rupeeseedwsboot\target\classes started by YASH in C:\Users\YASH\Desktop\spring\rupeeseedwsboot)
+2020-08-27 10:27:22,850 DEBUG org.springframework.boot.StartupInfoLogger:53 [restartedMain] Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+2020-08-27 10:27:22,851 INFO org.springframework.boot.SpringApplication:654 [restartedMain] No active profile set, falling back to default profiles: default
+2020-08-27 10:27:25,821 INFO org.springframework.boot.StartupInfoLogger:59 [restartedMain] Started RupeeSeedWsBootApplication in 3.06 seconds (JVM running for 117.864)
+2020-08-27 10:27:31,615 INFO rupeeseed.controllers.admin.AdminController:63 [http-nio-8080-exec-2] Entry in clientGet
+2020-08-27 10:27:31,616 DEBUG rupeeseed.controllers.admin.AdminController:68 [http-nio-8080-exec-2] Request > CommonRequest{entity_id='DP007', source='M', token_id='', iv='', data={client_id=DP001, row_count=25, row_offset=1}}
+2020-08-27 10:27:31,733 DEBUG rupeeseed.controllers.admin.AdminController:100 [http-nio-8080-exec-2] GetClientQry Qry > []| params > {count_from_key=1, count_to_key=26}
+2020-08-27 10:27:31,735 INFO rupeeseed.controllers.admin.AdminController:145 [http-nio-8080-exec-2] Response > success
+2020-08-27 10:27:31,735 WARN rupeeseed.controllers.admin.AdminController:147 [http-nio-8080-exec-2] Time Diff > 119
+2020-08-27 10:31:35,589 INFO org.springframework.boot.StartupInfoLogger:50 [restartedMain] Starting RupeeSeedWsBootApplication on YASH-LAPTOP with PID 10648 (C:\Users\YASH\Desktop\spring\rupeeseedwsboot\target\classes started by YASH in C:\Users\YASH\Desktop\spring\rupeeseedwsboot)
+2020-08-27 10:31:35,590 DEBUG org.springframework.boot.StartupInfoLogger:53 [restartedMain] Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+2020-08-27 10:31:35,590 INFO org.springframework.boot.SpringApplication:654 [restartedMain] No active profile set, falling back to default profiles: default
+2020-08-27 10:31:38,378 INFO org.springframework.boot.StartupInfoLogger:59 [restartedMain] Started RupeeSeedWsBootApplication in 2.885 seconds (JVM running for 370.421)
+2020-08-27 10:31:41,417 INFO rupeeseed.controllers.admin.AdminController:63 [http-nio-8080-exec-2] Entry in clientGet
+2020-08-27 10:31:41,419 DEBUG rupeeseed.controllers.admin.AdminController:68 [http-nio-8080-exec-2] Request > CommonRequest{entity_id='DP007', source='M', token_id='', iv='', data={client_id=DP001, row_count=25, row_offset=1}}
+2020-08-27 10:31:41,549 DEBUG rupeeseed.controllers.admin.AdminController:100 [http-nio-8080-exec-2] GetClientQry Qry > []| params > {count_from_key=1, count_to_key=26}
+2020-08-27 10:31:41,554 INFO rupeeseed.controllers.admin.AdminController:145 [http-nio-8080-exec-2] Response > success
+2020-08-27 10:31:41,556 WARN rupeeseed.controllers.admin.AdminController:147 [http-nio-8080-exec-2] Time Diff > 137
+2020-08-27 10:31:52,328 INFO rupeeseed.controllers.admin.AdminController:154 [http-nio-8080-exec-3] Entry in clientAdd
+2020-08-27 10:31:52,329 DEBUG rupeeseed.controllers.admin.AdminController:160 [http-nio-8080-exec-3] Request > CommonRequest{entity_id='DP007', source='M', token_id='', iv='', data={entity_id=6712, entity_name=ttt, client_type=A, entity_manager_code=1, entity_manager_type=BR, address_line1=1, address_line2=25, address_line3=1, entity_status=s, mobile_no=887954403, landline_no=1885896, entity_sub_type=1, user_id=484, dob=01/12/1998, pan=DPtt401, email=ast@gmail.com, pincode=445, ucc_code_cap=1, ucc_code_com=1, settlor_code_eq=1, settlor_code_dr=1, settlor_code_cr=1, settlor_code_cm=1, password_type=RANDOM, offline_allowed=Y, exchange_allowed=1, product_allowed=1, login_id=144322, ql_profile_id=444, risk_profile_id=2544, entity_limit=7, transaction_pass=144, remarks1=1, remarks2=1, remarks3=1, operation=2, operation_by=1}}
+2020-08-27 10:31:52,440 DEBUG rupeeseed.controllers.admin.AdminController:214 [http-nio-8080-exec-3] QUERY---addStr.get_pass_qry---   [{PASS=RBNQe9cIB2}]
+2020-08-27 10:31:52,516 DEBUG rupeeseed.controllers.admin.AdminController:229 [http-nio-8080-exec-3] ----chk_qry1-----[{CNT=1}]
+2020-08-27 10:31:52,518 ERROR rupeeseed.controllers.admin.AdminController:234 [http-nio-8080-exec-3] Response -> CommonResponse{status='error', error_code='RS-1010', message='Invalid Request', data=[]}
+2020-08-27 10:32:03,079 INFO rupeeseed.controllers.admin.AdminController:154 [http-nio-8080-exec-4] Entry in clientAdd
+2020-08-27 10:32:03,080 DEBUG rupeeseed.controllers.admin.AdminController:160 [http-nio-8080-exec-4] Request > CommonRequest{entity_id='DP007', source='M', token_id='', iv='', data={entity_id=6712, entity_name=ttt, client_type=A, entity_manager_code=1, entity_manager_type=BR, address_line1=1, address_line2=25, address_line3=1, entity_status=s, mobile_no=887954403, landline_no=1885896, entity_sub_type=1, user_id=484, dob=01/12/1998, pan=DPtt401, email=ast@gmail.com, pincode=445, ucc_code_cap=1, ucc_code_com=1, settlor_code_eq=1, settlor_code_dr=1, settlor_code_cr=1, settlor_code_cm=1, password_type=RANDOM, offline_allowed=Y, exchange_allowed=1, product_allowed=1, login_id=144322, ql_profile_id=444, risk_profile_id=2544, entity_limit=7, transaction_pass=144, remarks1=1, remarks2=1, remarks3=1, operation=2, operation_by=1}}
+2020-08-27 10:32:03,203 DEBUG rupeeseed.controllers.admin.AdminController:214 [http-nio-8080-exec-4] QUERY---addStr.get_pass_qry---   [{PASS=AfVThFhnKY}]
+2020-08-27 10:32:03,266 DEBUG rupeeseed.controllers.admin.AdminController:229 [http-nio-8080-exec-4] ----chk_qry1-----[{CNT=1}]
+2020-08-27 10:32:03,266 ERROR rupeeseed.controllers.admin.AdminController:234 [http-nio-8080-exec-4] Response -> CommonResponse{status='error', error_code='RS-1010', message='Invalid Request', data=[]}
+2020-08-27 10:32:38,834 INFO rupeeseed.controllers.idata.FundLimit:43 [http-nio-8080-exec-5] Entry in FundLimit
+2020-08-27 10:32:38,835 DEBUG rupeeseed.controllers.idata.FundLimit:48 [http-nio-8080-exec-5] Request > CommonRequest{entity_id='DP007', source='M', token_id='', iv='', data={client_id=DP001}}
+2020-08-27 10:32:38,991 INFO rupeeseed.controllers.idata.FundLimit:60 [http-nio-8080-exec-5] Count > 0
+2020-08-27 10:32:38,992 INFO rupeeseed.controllers.idata.FundLimit:86 [http-nio-8080-exec-5] Response > success
+2020-08-27 10:32:38,992 WARN rupeeseed.controllers.idata.FundLimit:88 [http-nio-8080-exec-5] Time Diff > 157
+2020-08-27 10:32:50,655 INFO rupeeseed.controllers.idata.FundLimit:43 [http-nio-8080-exec-6] Entry in FundLimit
+2020-08-27 10:32:50,656 DEBUG rupeeseed.controllers.idata.FundLimit:48 [http-nio-8080-exec-6] Request > CommonRequest{entity_id='DP007', source='M', token_id='', iv='', data={client_id=DP001}}
+2020-08-27 10:32:50,800 INFO rupeeseed.controllers.idata.FundLimit:60 [http-nio-8080-exec-6] Count > 0
+2020-08-27 10:32:50,800 INFO rupeeseed.controllers.idata.FundLimit:86 [http-nio-8080-exec-6] Response > success
+2020-08-27 10:32:50,801 WARN rupeeseed.controllers.idata.FundLimit:88 [http-nio-8080-exec-6] Time Diff > 146
+2020-08-27 10:34:24,808 INFO org.springframework.boot.StartupInfoLogger:50 [restartedMain] Starting RupeeSeedWsBootApplication on YASH-LAPTOP with PID 10648 (C:\Users\YASH\Desktop\spring\rupeeseedwsboot\target\classes started by YASH in C:\Users\YASH\Desktop\spring\rupeeseedwsboot)
+2020-08-27 10:34:24,808 DEBUG org.springframework.boot.StartupInfoLogger:53 [restartedMain] Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+2020-08-27 10:34:24,808 INFO org.springframework.boot.SpringApplication:654 [restartedMain] No active profile set, falling back to default profiles: default
+2020-08-27 10:34:27,920 INFO org.springframework.boot.StartupInfoLogger:59 [restartedMain] Started RupeeSeedWsBootApplication in 3.194 seconds (JVM running for 539.963)
+2020-08-27 10:34:28,061 INFO rupeeseed.controllers.idata.FundLimit:43 [http-nio-8080-exec-1] Entry in FundLimit
+2020-08-27 10:34:28,064 DEBUG rupeeseed.controllers.idata.FundLimit:48 [http-nio-8080-exec-1] Request > CommonRequest{entity_id='DP007', source='M', token_id='', iv='', data={client_id=DP001}}
+2020-08-27 10:34:28,264 INFO rupeeseed.controllers.idata.FundLimit:60 [http-nio-8080-exec-1] Count > 0
+2020-08-27 10:34:28,266 INFO rupeeseed.controllers.idata.FundLimit:86 [http-nio-8080-exec-1] Response > success
+2020-08-27 10:34:28,267 WARN rupeeseed.controllers.idata.FundLimit:88 [http-nio-8080-exec-1] Time Diff > 205
+2020-08-27 10:34:36,903 INFO rupeeseed.controllers.idata.FundLimit:43 [http-nio-8080-exec-3] Entry in FundLimit
+2020-08-27 10:34:36,904 DEBUG rupeeseed.controllers.idata.FundLimit:48 [http-nio-8080-exec-3] Request > CommonRequest{entity_id='DP007', source='M', token_id='', iv='', data={client_id=DP001}}
+2020-08-27 10:34:37,064 INFO rupeeseed.controllers.idata.FundLimit:60 [http-nio-8080-exec-3] Count > 0
+2020-08-27 10:34:37,065 INFO rupeeseed.controllers.idata.FundLimit:86 [http-nio-8080-exec-3] Response > success
+2020-08-27 10:34:37,065 WARN rupeeseed.controllers.idata.FundLimit:88 [http-nio-8080-exec-3] Time Diff > 162
+2020-08-27 10:34:38,647 INFO rupeeseed.controllers.admin.AdminController:63 [http-nio-8080-exec-5] Entry in clientGet
+2020-08-27 10:34:38,648 DEBUG rupeeseed.controllers.admin.AdminController:68 [http-nio-8080-exec-5] Request > CommonRequest{entity_id='DP007', source='M', token_id='', iv='', data={client_id=DP001, row_count=25, row_offset=1}}
+2020-08-27 10:34:38,774 DEBUG rupeeseed.controllers.admin.AdminController:100 [http-nio-8080-exec-5] GetClientQry Qry > []| params > {count_from_key=1, count_to_key=26}
+2020-08-27 10:34:38,775 INFO rupeeseed.controllers.admin.AdminController:145 [http-nio-8080-exec-5] Response > success
+2020-08-27 10:34:38,775 WARN rupeeseed.controllers.admin.AdminController:147 [http-nio-8080-exec-5] Time Diff > 128
+2020-08-27 10:34:58,429 INFO org.springframework.boot.StartupInfoLogger:50 [restartedMain] Starting RupeeSeedWsBootApplication on YASH-LAPTOP with PID 10648 (C:\Users\YASH\Desktop\spring\rupeeseedwsboot\target\classes started by YASH in C:\Users\YASH\Desktop\spring\rupeeseedwsboot)
+2020-08-27 10:34:58,429 DEBUG org.springframework.boot.StartupInfoLogger:53 [restartedMain] Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+2020-08-27 10:34:58,430 INFO org.springframework.boot.SpringApplication:654 [restartedMain] No active profile set, falling back to default profiles: default
+2020-08-27 10:35:01,539 INFO org.springframework.boot.StartupInfoLogger:59 [restartedMain] Started RupeeSeedWsBootApplication in 3.202 seconds (JVM running for 573.582)
+2020-08-27 10:35:01,800 INFO rupeeseed.controllers.admin.AdminController:63 [http-nio-8080-exec-1] Entry in clientGet
+2020-08-27 10:35:01,801 DEBUG rupeeseed.controllers.admin.AdminController:68 [http-nio-8080-exec-1] Request > CommonRequest{entity_id='DP007', source='M', token_id='', iv='', data={client_id=DP001, row_count=25, row_offset=1}}
+2020-08-27 10:35:01,924 DEBUG rupeeseed.controllers.admin.AdminController:100 [http-nio-8080-exec-1] GetClientQry Qry > []| params > {count_from_key=1, count_to_key=26}
+2020-08-27 10:35:01,926 INFO rupeeseed.controllers.admin.AdminController:145 [http-nio-8080-exec-1] Response > success
+2020-08-27 10:35:01,927 WARN rupeeseed.controllers.admin.AdminController:147 [http-nio-8080-exec-1] Time Diff > 125
+2020-08-27 10:35:08,986 INFO rupeeseed.controllers.idata.FundLimit:43 [http-nio-8080-exec-2] Entry in FundLimit
+2020-08-27 10:35:08,987 DEBUG rupeeseed.controllers.idata.FundLimit:48 [http-nio-8080-exec-2] Request > CommonRequest{entity_id='DP007', source='M', token_id='', iv='', data={client_id=DP001}}
+2020-08-27 10:35:09,167 INFO rupeeseed.controllers.idata.FundLimit:60 [http-nio-8080-exec-2] Count > 0
+2020-08-27 10:35:09,167 INFO rupeeseed.controllers.idata.FundLimit:86 [http-nio-8080-exec-2] Response > success
+2020-08-27 10:35:09,168 WARN rupeeseed.controllers.idata.FundLimit:88 [http-nio-8080-exec-2] Time Diff > 182
+2020-08-27 10:36:10,176 INFO org.springframework.boot.StartupInfoLogger:50 [restartedMain] Starting RupeeSeedWsBootApplication on YASH-LAPTOP with PID 10648 (C:\Users\YASH\Desktop\spring\rupeeseedwsboot\target\classes started by YASH in C:\Users\YASH\Desktop\spring\rupeeseedwsboot)
+2020-08-27 10:36:10,177 DEBUG org.springframework.boot.StartupInfoLogger:53 [restartedMain] Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+2020-08-27 10:36:10,177 INFO org.springframework.boot.SpringApplication:654 [restartedMain] No active profile set, falling back to default profiles: default
+2020-08-27 10:36:13,365 INFO org.springframework.boot.StartupInfoLogger:59 [restartedMain] Started RupeeSeedWsBootApplication in 3.273 seconds (JVM running for 645.408)
+2020-08-27 10:36:13,563 INFO rupeeseed.controllers.idata.FundLimit:43 [http-nio-8080-exec-2] Entry in FundLimit
+2020-08-27 10:36:13,565 DEBUG rupeeseed.controllers.idata.FundLimit:48 [http-nio-8080-exec-2] Request > CommonRequest{entity_id='DP007', source='M', token_id='', iv='', data={client_id=DP001}}
+2020-08-27 10:36:13,776 INFO rupeeseed.controllers.idata.FundLimit:60 [http-nio-8080-exec-2] Count > 0
+2020-08-27 10:36:13,777 INFO rupeeseed.controllers.idata.FundLimit:86 [http-nio-8080-exec-2] Response > success
+2020-08-27 10:36:13,778 WARN rupeeseed.controllers.idata.FundLimit:88 [http-nio-8080-exec-2] Time Diff > 215
+2020-08-27 10:36:26,391 INFO rupeeseed.controllers.idata.FundLimit:43 [http-nio-8080-exec-3] Entry in FundLimit
+2020-08-27 10:36:26,391 DEBUG rupeeseed.controllers.idata.FundLimit:48 [http-nio-8080-exec-3] Request > CommonRequest{entity_id='DP007', source='M', token_id='', iv='', data={client_id=DP001}}
+2020-08-27 10:36:26,586 INFO rupeeseed.controllers.idata.FundLimit:60 [http-nio-8080-exec-3] Count > 0
+2020-08-27 10:36:26,587 INFO rupeeseed.controllers.idata.FundLimit:86 [http-nio-8080-exec-3] Response > success
+2020-08-27 10:36:26,587 WARN rupeeseed.controllers.idata.FundLimit:88 [http-nio-8080-exec-3] Time Diff > 195
+2020-08-27 10:37:11,242 INFO org.springframework.boot.StartupInfoLogger:50 [restartedMain] Starting RupeeSeedWsBootApplication on YASH-LAPTOP with PID 10648 (C:\Users\YASH\Desktop\spring\rupeeseedwsboot\target\classes started by YASH in C:\Users\YASH\Desktop\spring\rupeeseedwsboot)
+2020-08-27 10:37:11,243 DEBUG org.springframework.boot.StartupInfoLogger:53 [restartedMain] Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+2020-08-27 10:37:11,243 INFO org.springframework.boot.SpringApplication:654 [restartedMain] No active profile set, falling back to default profiles: default
+2020-08-27 10:37:14,117 INFO org.springframework.boot.StartupInfoLogger:59 [restartedMain] Started RupeeSeedWsBootApplication in 3.004 seconds (JVM running for 706.16)
+2020-08-27 10:37:26,877 INFO rupeeseed.controllers.idata.FundLimit:43 [http-nio-8080-exec-2] Entry in FundLimit
+2020-08-27 10:37:26,879 DEBUG rupeeseed.controllers.idata.FundLimit:48 [http-nio-8080-exec-2] Request > CommonRequest{entity_id='DP007', source='M', token_id='', iv='', data={client_id=DP001}}
+2020-08-27 10:37:27,079 INFO rupeeseed.controllers.idata.FundLimit:60 [http-nio-8080-exec-2] Count > 0
+2020-08-27 10:37:27,086 INFO rupeeseed.controllers.idata.FundLimit:86 [http-nio-8080-exec-2] Response > success
+2020-08-27 10:37:27,088 WARN rupeeseed.controllers.idata.FundLimit:88 [http-nio-8080-exec-2] Time Diff > 210
+2020-08-27 10:37:38,961 INFO rupeeseed.controllers.admin.AdminController:63 [http-nio-8080-exec-3] Entry in clientGet
+2020-08-27 10:37:38,962 DEBUG rupeeseed.controllers.admin.AdminController:68 [http-nio-8080-exec-3] Request > CommonRequest{entity_id='DP007', source='M', token_id='', iv='', data={client_id=DP001, row_count=25, row_offset=1}}
+2020-08-27 10:37:39,138 DEBUG rupeeseed.controllers.admin.AdminController:100 [http-nio-8080-exec-3] GetClientQry Qry > []| params > {count_from_key=1, count_to_key=26}
+2020-08-27 10:37:39,139 INFO rupeeseed.controllers.admin.AdminController:145 [http-nio-8080-exec-3] Response > success
+2020-08-27 10:37:39,139 WARN rupeeseed.controllers.admin.AdminController:147 [http-nio-8080-exec-3] Time Diff > 178
+2020-08-27 10:39:23,274 INFO org.springframework.boot.StartupInfoLogger:50 [restartedMain] Starting RupeeSeedWsBootApplication on YASH-LAPTOP with PID 10648 (C:\Users\YASH\Desktop\spring\rupeeseedwsboot\target\classes started by YASH in C:\Users\YASH\Desktop\spring\rupeeseedwsboot)
+2020-08-27 10:39:23,275 DEBUG org.springframework.boot.StartupInfoLogger:53 [restartedMain] Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+2020-08-27 10:39:23,276 INFO org.springframework.boot.SpringApplication:654 [restartedMain] No active profile set, falling back to default profiles: default
+2020-08-27 10:39:25,936 INFO org.springframework.boot.StartupInfoLogger:59 [restartedMain] Started RupeeSeedWsBootApplication in 2.751 seconds (JVM running for 837.979)
+2020-08-27 10:39:27,276 INFO rupeeseed.controllers.admin.AdminController:63 [http-nio-8080-exec-2] Entry in clientGet
+2020-08-27 10:39:27,278 DEBUG rupeeseed.controllers.admin.AdminController:68 [http-nio-8080-exec-2] Request > CommonRequest{entity_id='DP007', source='M', token_id='', iv='', data={client_id=DP001, row_count=25, row_offset=1}}
+2020-08-27 10:39:27,401 DEBUG rupeeseed.controllers.admin.AdminController:100 [http-nio-8080-exec-2] GetClientQry Qry > []| params > {count_from_key=1, count_to_key=26}
+2020-08-27 10:39:27,406 INFO rupeeseed.controllers.admin.AdminController:145 [http-nio-8080-exec-2] Response > success
+2020-08-27 10:39:27,408 WARN rupeeseed.controllers.admin.AdminController:147 [http-nio-8080-exec-2] Time Diff > 131
+2020-08-27 10:39:36,403 INFO rupeeseed.controllers.idata.FundLimit:43 [http-nio-8080-exec-3] Entry in FundLimit
+2020-08-27 10:39:36,404 DEBUG rupeeseed.controllers.idata.FundLimit:48 [http-nio-8080-exec-3] Request > CommonRequest{entity_id='DP007', source='M', token_id='', iv='', data={client_id=DP001}}
+2020-08-27 10:39:36,545 INFO rupeeseed.controllers.idata.FundLimit:60 [http-nio-8080-exec-3] Count > 0
+2020-08-27 10:39:36,546 INFO rupeeseed.controllers.idata.FundLimit:86 [http-nio-8080-exec-3] Response > success
+2020-08-27 10:39:36,547 WARN rupeeseed.controllers.idata.FundLimit:88 [http-nio-8080-exec-3] Time Diff > 143
+2020-08-27 10:42:46,387 INFO org.springframework.boot.StartupInfoLogger:50 [restartedMain] Starting RupeeSeedWsBootApplication on YASH-LAPTOP with PID 10648 (C:\Users\YASH\Desktop\spring\rupeeseedwsboot\target\classes started by YASH in C:\Users\YASH\Desktop\spring\rupeeseedwsboot)
+2020-08-27 10:42:46,387 DEBUG org.springframework.boot.StartupInfoLogger:53 [restartedMain] Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+2020-08-27 10:42:46,388 INFO org.springframework.boot.SpringApplication:654 [restartedMain] No active profile set, falling back to default profiles: default
+2020-08-27 10:42:50,564 INFO org.springframework.boot.StartupInfoLogger:59 [restartedMain] Started RupeeSeedWsBootApplication in 4.259 seconds (JVM running for 1042.607)
+2020-08-27 10:42:58,555 INFO org.springframework.boot.StartupInfoLogger:50 [restartedMain] Starting RupeeSeedWsBootApplication on YASH-LAPTOP with PID 10648 (C:\Users\YASH\Desktop\spring\rupeeseedwsboot\target\classes started by YASH in C:\Users\YASH\Desktop\spring\rupeeseedwsboot)
+2020-08-27 10:42:58,556 DEBUG org.springframework.boot.StartupInfoLogger:53 [restartedMain] Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+2020-08-27 10:42:58,557 INFO org.springframework.boot.SpringApplication:654 [restartedMain] No active profile set, falling back to default profiles: default
+2020-08-27 10:43:01,524 INFO org.springframework.boot.StartupInfoLogger:59 [restartedMain] Started RupeeSeedWsBootApplication in 3.094 seconds (JVM running for 1053.566)
+2020-08-27 10:43:33,825 ERROR rupeeseed.controllers.admin.AdminController:234 [http-nio-8080-exec-3] Response -> CommonResponse{status='error', error_code='RS-1010', message='Invalid Request', data=[]}
+2020-08-27 10:45:18,270 INFO org.springframework.boot.StartupInfoLogger:50 [restartedMain] Starting RupeeSeedWsBootApplication on YASH-LAPTOP with PID 10648 (C:\Users\YASH\Desktop\spring\rupeeseedwsboot\target\classes started by YASH in C:\Users\YASH\Desktop\spring\rupeeseedwsboot)
+2020-08-27 10:45:18,271 DEBUG org.springframework.boot.StartupInfoLogger:53 [restartedMain] Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+2020-08-27 10:45:18,271 INFO org.springframework.boot.SpringApplication:654 [restartedMain] No active profile set, falling back to default profiles: default
+2020-08-27 10:45:21,016 INFO org.springframework.boot.StartupInfoLogger:59 [restartedMain] Started RupeeSeedWsBootApplication in 2.845 seconds (JVM running for 1193.059)
+2020-08-27 10:45:25,530 ERROR rupeeseed.controllers.admin.AdminController:234 [http-nio-8080-exec-2] Response -> CommonResponse{status='error', error_code='RS-1010', message='Invalid Request', data=[]}
+2020-08-27 10:56:43,283 INFO org.springframework.boot.StartupInfoLogger:50 [restartedMain] Starting RupeeSeedWsBootApplication on YASH-LAPTOP with PID 10648 (C:\Users\YASH\Desktop\spring\rupeeseedwsboot\target\classes started by YASH in C:\Users\YASH\Desktop\spring\rupeeseedwsboot)
+2020-08-27 10:56:43,284 DEBUG org.springframework.boot.StartupInfoLogger:53 [restartedMain] Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+2020-08-27 10:56:43,284 INFO org.springframework.boot.SpringApplication:654 [restartedMain] No active profile set, falling back to default profiles: default
+2020-08-27 10:56:46,109 INFO org.springframework.boot.StartupInfoLogger:59 [restartedMain] Started RupeeSeedWsBootApplication in 2.905 seconds (JVM running for 1878.152)
+2020-08-27 10:58:22,444 INFO org.springframework.boot.StartupInfoLogger:50 [restartedMain] Starting RupeeSeedWsBootApplication on YASH-LAPTOP with PID 10648 (C:\Users\YASH\Desktop\spring\rupeeseedwsboot\target\classes started by YASH in C:\Users\YASH\Desktop\spring\rupeeseedwsboot)
+2020-08-27 10:58:22,445 DEBUG org.springframework.boot.StartupInfoLogger:53 [restartedMain] Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+2020-08-27 10:58:22,445 INFO org.springframework.boot.SpringApplication:654 [restartedMain] No active profile set, falling back to default profiles: default
+2020-08-27 10:58:24,867 INFO org.springframework.boot.StartupInfoLogger:59 [restartedMain] Started RupeeSeedWsBootApplication in 2.494 seconds (JVM running for 1976.909)
+2020-08-27 10:59:12,938 INFO org.springframework.boot.StartupInfoLogger:50 [restartedMain] Starting RupeeSeedWsBootApplication on YASH-LAPTOP with PID 10648 (C:\Users\YASH\Desktop\spring\rupeeseedwsboot\target\classes started by YASH in C:\Users\YASH\Desktop\spring\rupeeseedwsboot)
+2020-08-27 10:59:12,938 DEBUG org.springframework.boot.StartupInfoLogger:53 [restartedMain] Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+2020-08-27 10:59:12,939 INFO org.springframework.boot.SpringApplication:654 [restartedMain] No active profile set, falling back to default profiles: default
+2020-08-27 10:59:15,338 INFO org.springframework.boot.StartupInfoLogger:59 [restartedMain] Started RupeeSeedWsBootApplication in 2.474 seconds (JVM running for 2027.381)
+2020-08-27 11:01:27,130 INFO org.springframework.boot.StartupInfoLogger:50 [restartedMain] Starting RupeeSeedWsBootApplication on YASH-LAPTOP with PID 10648 (C:\Users\YASH\Desktop\spring\rupeeseedwsboot\target\classes started by YASH in C:\Users\YASH\Desktop\spring\rupeeseedwsboot)
+2020-08-27 11:01:27,130 DEBUG org.springframework.boot.StartupInfoLogger:53 [restartedMain] Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+2020-08-27 11:01:27,131 INFO org.springframework.boot.SpringApplication:654 [restartedMain] No active profile set, falling back to default profiles: default
+2020-08-27 11:01:29,545 INFO org.springframework.boot.StartupInfoLogger:59 [restartedMain] Started RupeeSeedWsBootApplication in 2.491 seconds (JVM running for 2161.588)
+2020-08-27 11:03:14,391 INFO org.springframework.boot.StartupInfoLogger:50 [restartedMain] Starting RupeeSeedWsBootApplication on YASH-LAPTOP with PID 10648 (C:\Users\YASH\Desktop\spring\rupeeseedwsboot\target\classes started by YASH in C:\Users\YASH\Desktop\spring\rupeeseedwsboot)
+2020-08-27 11:03:14,391 DEBUG org.springframework.boot.StartupInfoLogger:53 [restartedMain] Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+2020-08-27 11:03:14,392 INFO org.springframework.boot.SpringApplication:654 [restartedMain] No active profile set, falling back to default profiles: default
+2020-08-27 11:03:17,201 INFO org.springframework.boot.StartupInfoLogger:59 [restartedMain] Started RupeeSeedWsBootApplication in 2.914 seconds (JVM running for 2269.244)
+2020-08-27 11:03:21,524 INFO org.springframework.boot.StartupInfoLogger:50 [restartedMain] Starting RupeeSeedWsBootApplication on YASH-LAPTOP with PID 10648 (C:\Users\YASH\Desktop\spring\rupeeseedwsboot\target\classes started by YASH in C:\Users\YASH\Desktop\spring\rupeeseedwsboot)
+2020-08-27 11:03:21,524 DEBUG org.springframework.boot.StartupInfoLogger:53 [restartedMain] Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+2020-08-27 11:03:21,525 INFO org.springframework.boot.SpringApplication:654 [restartedMain] No active profile set, falling back to default profiles: default
+2020-08-27 11:03:24,022 INFO org.springframework.boot.StartupInfoLogger:59 [restartedMain] Started RupeeSeedWsBootApplication in 2.572 seconds (JVM running for 2276.065)
+2020-08-27 11:03:39,368 INFO org.springframework.boot.StartupInfoLogger:50 [restartedMain] Starting RupeeSeedWsBootApplication on YASH-LAPTOP with PID 8416 (C:\Users\YASH\Desktop\spring\rupeeseedwsboot\target\classes started by YASH in C:\Users\YASH\Desktop\spring\rupeeseedwsboot)
+2020-08-27 11:03:39,377 DEBUG org.springframework.boot.StartupInfoLogger:53 [restartedMain] Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+2020-08-27 11:03:39,380 INFO org.springframework.boot.SpringApplication:654 [restartedMain] No active profile set, falling back to default profiles: default
+2020-08-27 11:03:47,522 INFO org.springframework.boot.StartupInfoLogger:59 [restartedMain] Started RupeeSeedWsBootApplication in 8.673 seconds (JVM running for 10.805)
+2020-08-27 11:05:05,610 INFO org.springframework.boot.StartupInfoLogger:50 [restartedMain] Starting RupeeSeedWsBootApplication on YASH-LAPTOP with PID 14100 (C:\Users\YASH\Desktop\spring\rupeeseedwsboot\target\classes started by YASH in C:\Users\YASH\Desktop\spring\rupeeseedwsboot)
+2020-08-27 11:05:05,620 DEBUG org.springframework.boot.StartupInfoLogger:53 [restartedMain] Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+2020-08-27 11:05:05,622 INFO org.springframework.boot.SpringApplication:654 [restartedMain] No active profile set, falling back to default profiles: default
+2020-08-27 11:05:14,127 INFO org.springframework.boot.StartupInfoLogger:59 [restartedMain] Started RupeeSeedWsBootApplication in 9.06 seconds (JVM running for 11.703)
+2020-08-27 11:05:54,692 INFO org.springframework.boot.StartupInfoLogger:50 [restartedMain] Starting RupeeSeedWsBootApplication on YASH-LAPTOP with PID 14100 (C:\Users\YASH\Desktop\spring\rupeeseedwsboot\target\classes started by YASH in C:\Users\YASH\Desktop\spring\rupeeseedwsboot)
+2020-08-27 11:05:54,693 DEBUG org.springframework.boot.StartupInfoLogger:53 [restartedMain] Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+2020-08-27 11:05:54,694 INFO org.springframework.boot.SpringApplication:654 [restartedMain] No active profile set, falling back to default profiles: default
+2020-08-27 11:05:57,521 INFO org.springframework.boot.StartupInfoLogger:59 [restartedMain] Started RupeeSeedWsBootApplication in 2.989 seconds (JVM running for 55.097)
+2020-08-27 11:06:01,242 INFO rupeeseed.controllers.admin.AdminController:63 [http-nio-8080-exec-2] Entry in clientGet
+2020-08-27 11:06:01,247 DEBUG rupeeseed.controllers.admin.AdminController:68 [http-nio-8080-exec-2] Request > CommonRequest{entity_id='DP007', source='M', token_id='', iv='', data={client_id=DP001, row_count=25, row_offset=1}}
+2020-08-27 11:06:01,505 DEBUG rupeeseed.controllers.admin.AdminController:100 [http-nio-8080-exec-2] GetClientQry Qry > []| params > {count_from_key=1, count_to_key=26}
+2020-08-27 11:06:01,521 INFO rupeeseed.controllers.admin.AdminController:145 [http-nio-8080-exec-2] Response > success
+2020-08-27 11:06:01,522 WARN rupeeseed.controllers.admin.AdminController:147 [http-nio-8080-exec-2] Time Diff > 279
+2020-08-27 11:06:23,608 INFO rupeeseed.controllers.admin.AdminController:154 [http-nio-8080-exec-3] Entry in clientAdd
+2020-08-27 11:06:23,609 DEBUG rupeeseed.controllers.admin.AdminController:160 [http-nio-8080-exec-3] Request > CommonRequest{entity_id='DP007', source='M', token_id='', iv='', data={entity_id=6712, entity_name=ttt, client_type=A, entity_manager_code=1, entity_manager_type=BR, address_line1=1, address_line2=25, address_line3=1, entity_status=s, mobile_no=887954403, landline_no=1885896, entity_sub_type=1, user_id=484, dob=01/12/1998, pan=DPtt401, email=ast@gmail.com, pincode=445, ucc_code_cap=1, ucc_code_com=1, settlor_code_eq=1, settlor_code_dr=1, settlor_code_cr=1, settlor_code_cm=1, password_type=RANDOM, offline_allowed=Y, exchange_allowed=1, product_allowed=1, login_id=144322, ql_profile_id=444, risk_profile_id=2544, entity_limit=7, transaction_pass=144, remarks1=1, remarks2=1, remarks3=1, operation=2, operation_by=1}}
+2020-08-27 11:06:23,716 DEBUG rupeeseed.controllers.admin.AdminController:214 [http-nio-8080-exec-3] QUERY---addStr.get_pass_qry---   [{PASS=acYh9rBsxm}]
+2020-08-27 11:06:23,766 DEBUG rupeeseed.controllers.admin.AdminController:229 [http-nio-8080-exec-3] ----chk_qry1-----[{CNT=1}]
+2020-08-27 11:06:23,771 ERROR rupeeseed.controllers.admin.AdminController:234 [http-nio-8080-exec-3] Response -> CommonResponse{status='error', error_code='RS-1010', message='Invalid Request', data=[]}
+2020-08-27 11:09:43,596 INFO org.springframework.boot.StartupInfoLogger:50 [restartedMain] Starting RupeeSeedWsBootApplication on YASH-LAPTOP with PID 14100 (C:\Users\YASH\Desktop\spring\rupeeseedwsboot\target\classes started by YASH in C:\Users\YASH\Desktop\spring\rupeeseedwsboot)
+2020-08-27 11:09:43,597 DEBUG org.springframework.boot.StartupInfoLogger:53 [restartedMain] Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+2020-08-27 11:09:43,598 INFO org.springframework.boot.SpringApplication:654 [restartedMain] No active profile set, falling back to default profiles: default
+2020-08-27 11:09:46,464 INFO org.springframework.boot.StartupInfoLogger:59 [restartedMain] Started RupeeSeedWsBootApplication in 2.984 seconds (JVM running for 284.039)
+2020-08-27 11:10:17,353 INFO rupeeseed.controllers.idata.FundLimit:43 [http-nio-8080-exec-2] Entry in FundLimit
+2020-08-27 11:10:17,354 DEBUG rupeeseed.controllers.idata.FundLimit:48 [http-nio-8080-exec-2] Request > CommonRequest{entity_id='DP007', source='M', token_id='', iv='', data={client_id=DP001}}
+2020-08-27 11:10:18,661 INFO rupeeseed.controllers.idata.FundLimit:60 [http-nio-8080-exec-2] Count > 0
+2020-08-27 11:10:18,666 INFO rupeeseed.controllers.idata.FundLimit:86 [http-nio-8080-exec-2] Response > success
+2020-08-27 11:10:18,667 WARN rupeeseed.controllers.idata.FundLimit:88 [http-nio-8080-exec-2] Time Diff > 1314
+2020-08-27 11:12:14,055 INFO org.springframework.boot.StartupInfoLogger:50 [restartedMain] Starting RupeeSeedWsBootApplication on YASH-LAPTOP with PID 14100 (C:\Users\YASH\Desktop\spring\rupeeseedwsboot\target\classes started by YASH in C:\Users\YASH\Desktop\spring\rupeeseedwsboot)
+2020-08-27 11:12:14,056 DEBUG org.springframework.boot.StartupInfoLogger:53 [restartedMain] Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+2020-08-27 11:12:14,056 INFO org.springframework.boot.SpringApplication:654 [restartedMain] No active profile set, falling back to default profiles: default
+2020-08-27 11:12:17,232 INFO org.springframework.boot.StartupInfoLogger:59 [restartedMain] Started RupeeSeedWsBootApplication in 3.289 seconds (JVM running for 434.808)
+2020-08-27 11:12:24,595 INFO rupeeseed.controllers.admin.AdminController:63 [http-nio-8080-exec-2] Entry in clientGet
+2020-08-27 11:12:24,596 DEBUG rupeeseed.controllers.admin.AdminController:68 [http-nio-8080-exec-2] Request > CommonRequest{entity_id='DP007', source='M', token_id='', iv='', data={client_id=DP001, row_count=25, row_offset=1}}
+2020-08-27 11:12:24,716 DEBUG rupeeseed.controllers.admin.AdminController:100 [http-nio-8080-exec-2] GetClientQry Qry > []| params > {count_from_key=1, count_to_key=26}
+2020-08-27 11:12:24,721 INFO rupeeseed.controllers.admin.AdminController:145 [http-nio-8080-exec-2] Response > success
+2020-08-27 11:12:24,722 WARN rupeeseed.controllers.admin.AdminController:147 [http-nio-8080-exec-2] Time Diff > 126
+2020-08-27 11:12:34,172 INFO rupeeseed.controllers.admin.AdminController:63 [http-nio-8080-exec-3] Entry in clientGet
+2020-08-27 11:12:34,172 DEBUG rupeeseed.controllers.admin.AdminController:68 [http-nio-8080-exec-3] Request > CommonRequest{entity_id='DP007', source='M', token_id='', iv='', data={client_id=DP001, row_count=25, row_offset=1}}
+2020-08-27 11:12:34,336 DEBUG rupeeseed.controllers.admin.AdminController:100 [http-nio-8080-exec-3] GetClientQry Qry > []| params > {count_from_key=1, count_to_key=26}
+2020-08-27 11:12:34,336 INFO rupeeseed.controllers.admin.AdminController:145 [http-nio-8080-exec-3] Response > success
+2020-08-27 11:12:34,336 WARN rupeeseed.controllers.admin.AdminController:147 [http-nio-8080-exec-3] Time Diff > 164
+2020-08-27 11:12:41,739 INFO rupeeseed.controllers.idata.FundLimit:43 [http-nio-8080-exec-4] Entry in FundLimit
+2020-08-27 11:12:41,740 DEBUG rupeeseed.controllers.idata.FundLimit:48 [http-nio-8080-exec-4] Request > CommonRequest{entity_id='DP007', source='M', token_id='', iv='', data={client_id=DP001}}
+2020-08-27 11:12:41,873 INFO rupeeseed.controllers.idata.FundLimit:60 [http-nio-8080-exec-4] Count > 0
+2020-08-27 11:12:41,874 INFO rupeeseed.controllers.idata.FundLimit:86 [http-nio-8080-exec-4] Response > success
+2020-08-27 11:12:41,874 WARN rupeeseed.controllers.idata.FundLimit:88 [http-nio-8080-exec-4] Time Diff > 135
+2020-08-27 11:12:47,548 INFO rupeeseed.controllers.idata.FundLimit:43 [http-nio-8080-exec-5] Entry in FundLimit
+2020-08-27 11:12:47,549 DEBUG rupeeseed.controllers.idata.FundLimit:48 [http-nio-8080-exec-5] Request > CommonRequest{entity_id='DP007', source='M', token_id='', iv='', data={client_id=DP001}}
+2020-08-27 11:12:47,679 INFO rupeeseed.controllers.idata.FundLimit:60 [http-nio-8080-exec-5] Count > 0
+2020-08-27 11:12:47,679 INFO rupeeseed.controllers.idata.FundLimit:86 [http-nio-8080-exec-5] Response > success
+2020-08-27 11:12:47,679 WARN rupeeseed.controllers.idata.FundLimit:88 [http-nio-8080-exec-5] Time Diff > 130
+2020-08-27 11:12:48,155 INFO rupeeseed.controllers.idata.FundLimit:43 [http-nio-8080-exec-6] Entry in FundLimit
+2020-08-27 11:12:48,156 DEBUG rupeeseed.controllers.idata.FundLimit:48 [http-nio-8080-exec-6] Request > CommonRequest{entity_id='DP007', source='M', token_id='', iv='', data={client_id=DP001}}
+2020-08-27 11:12:48,297 INFO rupeeseed.controllers.idata.FundLimit:60 [http-nio-8080-exec-6] Count > 0
+2020-08-27 11:12:48,297 INFO rupeeseed.controllers.idata.FundLimit:86 [http-nio-8080-exec-6] Response > success
+2020-08-27 11:12:48,297 WARN rupeeseed.controllers.idata.FundLimit:88 [http-nio-8080-exec-6] Time Diff > 141
+2020-08-27 11:13:35,528 INFO org.springframework.boot.StartupInfoLogger:50 [restartedMain] Starting RupeeSeedWsBootApplication on YASH-LAPTOP with PID 14100 (C:\Users\YASH\Desktop\spring\rupeeseedwsboot\target\classes started by YASH in C:\Users\YASH\Desktop\spring\rupeeseedwsboot)
+2020-08-27 11:13:35,529 DEBUG org.springframework.boot.StartupInfoLogger:53 [restartedMain] Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+2020-08-27 11:13:35,529 INFO org.springframework.boot.SpringApplication:654 [restartedMain] No active profile set, falling back to default profiles: default
+2020-08-27 11:13:38,533 INFO org.springframework.boot.StartupInfoLogger:59 [restartedMain] Started RupeeSeedWsBootApplication in 3.096 seconds (JVM running for 516.109)
+2020-08-27 11:13:42,109 INFO rupeeseed.controllers.admin.AdminController:154 [http-nio-8080-exec-2] Entry in clientAdd
+2020-08-27 11:13:42,110 DEBUG rupeeseed.controllers.admin.AdminController:160 [http-nio-8080-exec-2] Request > CommonRequest{entity_id='DP007', source='M', token_id='', iv='', data={entity_id=6712, entity_name=ttt, client_type=A, entity_manager_code=1, entity_manager_type=BR, address_line1=1, address_line2=25, address_line3=1, entity_status=s, mobile_no=887954403, landline_no=1885896, entity_sub_type=1, user_id=484, dob=01/12/1998, pan=DPtt401, email=ast@gmail.com, pincode=445, ucc_code_cap=1, ucc_code_com=1, settlor_code_eq=1, settlor_code_dr=1, settlor_code_cr=1, settlor_code_cm=1, password_type=RANDOM, offline_allowed=Y, exchange_allowed=1, product_allowed=1, login_id=144322, ql_profile_id=444, risk_profile_id=2544, entity_limit=7, transaction_pass=144, remarks1=1, remarks2=1, remarks3=1, operation=2, operation_by=1}}
+2020-08-27 11:13:42,215 DEBUG rupeeseed.controllers.admin.AdminController:214 [http-nio-8080-exec-2] QUERY---addStr.get_pass_qry---   [{PASS=hxJjIqsYvW}]
+2020-08-27 11:13:42,279 DEBUG rupeeseed.controllers.admin.AdminController:229 [http-nio-8080-exec-2] ----chk_qry1-----[{CNT=1}]
+2020-08-27 11:13:42,282 ERROR rupeeseed.controllers.admin.AdminController:234 [http-nio-8080-exec-2] Response -> CommonResponse{status='error', error_code='RS-1010', message='Invalid Request', data=[]}
+2020-08-27 11:13:48,214 INFO rupeeseed.controllers.idata.FundLimit:43 [http-nio-8080-exec-3] Entry in FundLimit
+2020-08-27 11:13:48,214 DEBUG rupeeseed.controllers.idata.FundLimit:48 [http-nio-8080-exec-3] Request > CommonRequest{entity_id='DP007', source='M', token_id='', iv='', data={client_id=DP001}}
+2020-08-27 11:13:48,422 INFO rupeeseed.controllers.idata.FundLimit:60 [http-nio-8080-exec-3] Count > 0
+2020-08-27 11:13:48,427 INFO rupeeseed.controllers.idata.FundLimit:86 [http-nio-8080-exec-3] Response > success
+2020-08-27 11:13:48,428 WARN rupeeseed.controllers.idata.FundLimit:88 [http-nio-8080-exec-3] Time Diff > 213
+2020-08-27 11:14:38,280 INFO org.springframework.boot.StartupInfoLogger:50 [restartedMain] Starting RupeeSeedWsBootApplication on YASH-LAPTOP with PID 14100 (C:\Users\YASH\Desktop\spring\rupeeseedwsboot\target\classes started by YASH in C:\Users\YASH\Desktop\spring\rupeeseedwsboot)
+2020-08-27 11:14:38,280 DEBUG org.springframework.boot.StartupInfoLogger:53 [restartedMain] Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+2020-08-27 11:14:38,281 INFO org.springframework.boot.SpringApplication:654 [restartedMain] No active profile set, falling back to default profiles: default
+2020-08-27 11:14:41,609 INFO org.springframework.boot.StartupInfoLogger:59 [restartedMain] Started RupeeSeedWsBootApplication in 3.477 seconds (JVM running for 579.184)
+2020-08-27 11:14:42,118 INFO rupeeseed.controllers.idata.FundLimit:43 [http-nio-8080-exec-1] Entry in FundLimit
+2020-08-27 11:14:42,122 DEBUG rupeeseed.controllers.idata.FundLimit:48 [http-nio-8080-exec-1] Request > CommonRequest{entity_id='DP007', source='M', token_id='', iv='', data={client_id=DP001}}
+2020-08-27 11:14:42,602 INFO rupeeseed.controllers.idata.FundLimit:60 [http-nio-8080-exec-1] Count > 0
+2020-08-27 11:14:42,606 INFO rupeeseed.controllers.idata.FundLimit:86 [http-nio-8080-exec-1] Response > success
+2020-08-27 11:14:42,608 WARN rupeeseed.controllers.idata.FundLimit:88 [http-nio-8080-exec-1] Time Diff > 489
+2020-08-27 11:14:47,749 INFO rupeeseed.controllers.admin.AdminController:63 [http-nio-8080-exec-2] Entry in clientGet
+2020-08-27 11:14:47,749 DEBUG rupeeseed.controllers.admin.AdminController:68 [http-nio-8080-exec-2] Request > CommonRequest{entity_id='DP007', source='M', token_id='', iv='', data={client_id=DP001, row_count=25, row_offset=1}}
+2020-08-27 11:14:47,872 DEBUG rupeeseed.controllers.admin.AdminController:100 [http-nio-8080-exec-2] GetClientQry Qry > []| params > {count_from_key=1, count_to_key=26}
+2020-08-27 11:14:47,873 INFO rupeeseed.controllers.admin.AdminController:145 [http-nio-8080-exec-2] Response > success
+2020-08-27 11:14:47,874 WARN rupeeseed.controllers.admin.AdminController:147 [http-nio-8080-exec-2] Time Diff > 124
+2020-08-27 11:21:56,733 INFO org.springframework.boot.StartupInfoLogger:50 [restartedMain] Starting RupeeSeedWsBootApplication on YASH-LAPTOP with PID 14100 (C:\Users\YASH\Desktop\spring\rupeeseedwsboot\target\classes started by YASH in C:\Users\YASH\Desktop\spring\rupeeseedwsboot)
+2020-08-27 11:21:56,734 DEBUG org.springframework.boot.StartupInfoLogger:53 [restartedMain] Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+2020-08-27 11:21:56,734 INFO org.springframework.boot.SpringApplication:654 [restartedMain] No active profile set, falling back to default profiles: default
+2020-08-27 11:21:59,692 INFO org.springframework.boot.StartupInfoLogger:59 [restartedMain] Started RupeeSeedWsBootApplication in 3.082 seconds (JVM running for 1017.267)
+2020-08-27 11:22:04,819 INFO rupeeseed.controllers.admin.AdminController:63 [http-nio-8080-exec-2] Entry in clientGet
+2020-08-27 11:22:04,821 DEBUG rupeeseed.controllers.admin.AdminController:68 [http-nio-8080-exec-2] Request > CommonRequest{entity_id='DP007', source='M', token_id='', iv='', data={client_id=DP001, row_count=25, row_offset=1}}
+2020-08-27 11:22:04,943 DEBUG rupeeseed.controllers.admin.AdminController:100 [http-nio-8080-exec-2] GetClientQry Qry > []| params > {count_from_key=1, count_to_key=26}
+2020-08-27 11:22:04,950 INFO rupeeseed.controllers.admin.AdminController:145 [http-nio-8080-exec-2] Response > success
+2020-08-27 11:22:04,951 WARN rupeeseed.controllers.admin.AdminController:147 [http-nio-8080-exec-2] Time Diff > 131
+2020-08-27 11:22:58,110 INFO org.springframework.boot.StartupInfoLogger:50 [restartedMain] Starting RupeeSeedWsBootApplication on YASH-LAPTOP with PID 14100 (C:\Users\YASH\Desktop\spring\rupeeseedwsboot\target\classes started by YASH in C:\Users\YASH\Desktop\spring\rupeeseedwsboot)
+2020-08-27 11:22:58,110 DEBUG org.springframework.boot.StartupInfoLogger:53 [restartedMain] Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+2020-08-27 11:22:58,111 INFO org.springframework.boot.SpringApplication:654 [restartedMain] No active profile set, falling back to default profiles: default
+2020-08-27 11:23:01,045 INFO org.springframework.boot.StartupInfoLogger:59 [restartedMain] Started RupeeSeedWsBootApplication in 3.043 seconds (JVM running for 1078.62)
+2020-08-27 11:23:04,210 INFO rupeeseed.controllers.admin.AdminController:154 [http-nio-8080-exec-1] Entry in clientAdd
+2020-08-27 11:23:04,212 DEBUG rupeeseed.controllers.admin.AdminController:160 [http-nio-8080-exec-1] Request > CommonRequest{entity_id='DP007', source='M', token_id='', iv='', data={entity_id=6712, entity_name=ttt, client_type=A, entity_manager_code=1, entity_manager_type=BR, address_line1=1, address_line2=25, address_line3=1, entity_status=s, mobile_no=887954403, landline_no=1885896, entity_sub_type=1, user_id=484, dob=01/12/1998, pan=DPtt401, email=ast@gmail.com, pincode=445, ucc_code_cap=1, ucc_code_com=1, settlor_code_eq=1, settlor_code_dr=1, settlor_code_cr=1, settlor_code_cm=1, password_type=RANDOM, offline_allowed=Y, exchange_allowed=1, product_allowed=1, login_id=144322, ql_profile_id=444, risk_profile_id=2544, entity_limit=7, transaction_pass=144, remarks1=1, remarks2=1, remarks3=1, operation=2, operation_by=1}}
+2020-08-27 11:23:04,339 DEBUG rupeeseed.controllers.admin.AdminController:214 [http-nio-8080-exec-1] QUERY---addStr.get_pass_qry---   [{PASS=q87xRNXstB}]
+2020-08-27 11:23:04,393 DEBUG rupeeseed.controllers.admin.AdminController:229 [http-nio-8080-exec-1] ----chk_qry1-----[{CNT=1}]
+2020-08-27 11:23:04,398 ERROR rupeeseed.controllers.admin.AdminController:234 [http-nio-8080-exec-1] Response -> CommonResponse{status='error', error_code='RS-1010', message='Invalid Request', data=[]}
+2020-08-27 11:23:34,369 INFO rupeeseed.controllers.admin.AdminController:63 [http-nio-8080-exec-3] Entry in clientGet
+2020-08-27 11:23:34,370 DEBUG rupeeseed.controllers.admin.AdminController:68 [http-nio-8080-exec-3] Request > CommonRequest{entity_id='DP007', source='M', token_id='', iv='', data={client_id=DP001, row_count=25, row_offset=1}}
+2020-08-27 11:23:34,563 DEBUG rupeeseed.controllers.admin.AdminController:100 [http-nio-8080-exec-3] GetClientQry Qry > []| params > {count_from_key=1, count_to_key=26}
+2020-08-27 11:23:34,568 INFO rupeeseed.controllers.admin.AdminController:145 [http-nio-8080-exec-3] Response > success
+2020-08-27 11:23:34,570 WARN rupeeseed.controllers.admin.AdminController:147 [http-nio-8080-exec-3] Time Diff > 200
+2020-08-27 11:24:18,366 INFO org.springframework.boot.StartupInfoLogger:50 [restartedMain] Starting RupeeSeedWsBootApplication on YASH-LAPTOP with PID 14100 (C:\Users\YASH\Desktop\spring\rupeeseedwsboot\target\classes started by YASH in C:\Users\YASH\Desktop\spring\rupeeseedwsboot)
+2020-08-27 11:24:18,366 DEBUG org.springframework.boot.StartupInfoLogger:53 [restartedMain] Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+2020-08-27 11:24:18,367 INFO org.springframework.boot.SpringApplication:654 [restartedMain] No active profile set, falling back to default profiles: default
+2020-08-27 11:24:21,046 INFO org.springframework.boot.StartupInfoLogger:59 [restartedMain] Started RupeeSeedWsBootApplication in 2.765 seconds (JVM running for 1158.621)
+2020-08-27 11:24:25,631 INFO rupeeseed.controllers.admin.AdminController:63 [http-nio-8080-exec-1] Entry in clientGet
+2020-08-27 11:24:25,633 DEBUG rupeeseed.controllers.admin.AdminController:68 [http-nio-8080-exec-1] Request > CommonRequest{entity_id='DP007', source='M', token_id='', iv='', data={client_id=DP001, row_count=25, row_offset=1}}
+2020-08-27 11:24:25,757 DEBUG rupeeseed.controllers.admin.AdminController:100 [http-nio-8080-exec-1] GetClientQry Qry > []| params > {count_from_key=1, count_to_key=26}
+2020-08-27 11:24:25,759 INFO rupeeseed.controllers.admin.AdminController:145 [http-nio-8080-exec-1] Response > success
+2020-08-27 11:24:25,759 WARN rupeeseed.controllers.admin.AdminController:147 [http-nio-8080-exec-1] Time Diff > 127
+2020-08-27 11:24:34,504 INFO rupeeseed.controllers.idata.FundLimit:43 [http-nio-8080-exec-3] Entry in FundLimit
+2020-08-27 11:24:34,505 DEBUG rupeeseed.controllers.idata.FundLimit:48 [http-nio-8080-exec-3] Request > CommonRequest{entity_id='DP007', source='M', token_id='', iv='', data={client_id=DP001}}
+2020-08-27 11:24:34,632 INFO rupeeseed.controllers.idata.FundLimit:60 [http-nio-8080-exec-3] Count > 0
+2020-08-27 11:24:34,633 INFO rupeeseed.controllers.idata.FundLimit:86 [http-nio-8080-exec-3] Response > success
+2020-08-27 11:24:34,633 WARN rupeeseed.controllers.idata.FundLimit:88 [http-nio-8080-exec-3] Time Diff > 129
+2020-08-27 11:24:49,169 INFO org.springframework.boot.StartupInfoLogger:50 [restartedMain] Starting RupeeSeedWsBootApplication on YASH-LAPTOP with PID 14100 (C:\Users\YASH\Desktop\spring\rupeeseedwsboot\target\classes started by YASH in C:\Users\YASH\Desktop\spring\rupeeseedwsboot)
+2020-08-27 11:24:49,169 DEBUG org.springframework.boot.StartupInfoLogger:53 [restartedMain] Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+2020-08-27 11:24:49,169 INFO org.springframework.boot.SpringApplication:654 [restartedMain] No active profile set, falling back to default profiles: default
+2020-08-27 11:24:52,187 INFO org.springframework.boot.StartupInfoLogger:59 [restartedMain] Started RupeeSeedWsBootApplication in 3.1 seconds (JVM running for 1189.763)
+2020-08-27 11:25:07,797 INFO org.springframework.boot.StartupInfoLogger:50 [restartedMain] Starting RupeeSeedWsBootApplication on YASH-LAPTOP with PID 14100 (C:\Users\YASH\Desktop\spring\rupeeseedwsboot\target\classes started by YASH in C:\Users\YASH\Desktop\spring\rupeeseedwsboot)
+2020-08-27 11:25:07,797 DEBUG org.springframework.boot.StartupInfoLogger:53 [restartedMain] Running with Spring Boot v2.0.6.RELEASE, Spring v5.0.10.RELEASE
+2020-08-27 11:25:07,798 INFO org.springframework.boot.SpringApplication:654 [restartedMain] No active profile set, falling back to default profiles: default
+2020-08-27 11:25:10,493 INFO org.springframework.boot.StartupInfoLogger:59 [restartedMain] Started RupeeSeedWsBootApplication in 2.789 seconds (JVM running for 1208.069)

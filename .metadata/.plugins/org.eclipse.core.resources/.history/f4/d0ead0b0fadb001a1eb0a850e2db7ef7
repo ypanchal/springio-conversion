@@ -1,0 +1,140 @@
+package rupeeseed.controllers.misc;
+
+import java.time.Instant;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.sql.DataSource;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import io.micrometer.core.annotation.Timed;
+import rupeeseed.models.CommonRequest;
+import rupeeseed.models.CommonResponse;
+import rupeeseed.utility.Defination;
+import rupeeseed.utility.RespMsg;
+
+/**
+ * Created by Yash Panchal on 11-AUG-20.
+ */
+
+@RestController
+public class CustomSym {
+	  NamedParameterJdbcTemplate jdbcTemplate;
+	    
+		@Autowired
+	    DataSource dataSource;
+
+		private Logger logger = LoggerFactory.getLogger("rupeeseed");
+		
+		 @RequestMapping(value = "/ClientAdd", method = RequestMethod.POST)
+		 @Timed("rs")
+		 public CommonResponse customSym(@RequestBody CommonRequest inputPayload) throws JSONException {
+			 Instant before = Instant.now();
+		        logger.info("Entry in ClientAdd");
+		        jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+		        CommonResponse response = new CommonResponse();
+		        
+		        JSONObject j = new JSONObject(inputPayload.getData());
+		        logger.debug("Request > " + inputPayload.toString());
+		        
+		        if (!j.has("exchange") || j.getString("exchange").equals("") ||
+		                !j.has("segment") || j.getString("segment").equals("")) {
+		            response.setStatus(Defination.ERROR);
+		            response.setError_code(RespMsg.EC_INVALID_REQUEST);
+		            response.setMessage(RespMsg.getErrorMsg(RespMsg.EC_INVALID_REQUEST));
+		            logger.error("Response -> " + response.toString());
+		            return response;
+		        }
+		        
+		        String symbol;     
+		        if (j.has("symbol").toString().length() >= 40) {
+		        	response.setStatus(Defination.ERROR);
+		            response.setError_code(RespMsg.EC_INVALID_REQUEST);
+		            response.setMessage(RespMsg.getErrorMsg(RespMsg.EC_INVALID_REQUEST));
+		            logger.error("Response -> " + response.toString());
+		            return response;
+		        }
+		        
+		        try {
+		        	  Map<String, String> params = new HashMap<>();
+		              params.put("exchange_key", j.getString("exchange"));
+		              params.put("segment_key", j.getString("segment"));
+		              params.put("security_key",  j.getString("security_key"));
+		              SqlParameterSource namedParameters = new MapSqlParameterSource().addValues(params);
+		              List<Map<String, Object>> CSQry = jdbcTemplate.queryForList("SELECT CM_EXCHANGE, CM_SEGMENT, CM_CUSTOM_SYMBOL, CM_SECURITY_ID, CM_TIMESTAMP FROM CUSTOM_MASTER where \" +\r\n" +"\"CM_EXCHANGE = :exchange_key AND CM_SEGMENT = :segment_key AND CM_SECURITY_ID = :security_key"+namedParameters);	
+		              logger.debug("CS Qry > " + CSQry + " | params > " + params);
+		              
+		              if (CSQry.size() == 0) {
+			              params.put("exchange_key", j.getString("exchange"));
+			              params.put("segment_key", j.getString("segment"));
+			              params.put("security_key",  j.getString("symbol"));
+			              List<Map<String, Object>> ins_qry = jdbcTemplate.queryForList("INSERT INTO CUSTOM_MASTER(CM_EXCHANGE,CM_SEGMENT,CM_SECURITY_ID,CM_CUSTOM_SYMBOL) " + "VALUES(?,?,?,?);"+namedParameters);
+		                  logger.debug("QUERY > ins_qry > " + ins_qry + " | params > " + params);
+		                  
+		              }else {
+		            	  params.put("exchange_key", j.getString("exchange"));
+			              params.put("segment_key", j.getString("segment"));
+			              params.put("security_key",  j.getString("symbol"));
+			              List<Map<String, Object>> Updateqry = jdbcTemplate.queryForList("UPDATE CUSTOM_MASTER SET CM_CUSTOM_SYMBOL = ? , CM_TIMESTAMP = now() WHERE " +"CM_EXCHANGE = ? AND CM_SEGMENT = ? AND CM_SECURITY_ID = ? ;"+namedParameters);
+			              logger.debug("QUERY > Updateqry > " + Updateqry + "| params > " + params);
+		              }
+		              params.put("exchange_key", j.getString("exchange"));
+		              params.put("segment_key", j.getString("segment"));
+		              List<Map<String, Object>> Updateqry = jdbcTemplate.queryForList("UPDATE SECURITY_MASTER SET SM_CUSTOM_SYMBOL = ? , SM_UPDATE_DATE = now() WHERE " +"SM_EXCHANGE = ? AND SM_SEGMENT = ? AND SM_SCRIP_CODE = ? ;"+namedParameters);
+		              logger.debug("QUERY > Updateqry > " + Updateqry + "| params > " + params);   
+		        } catch (Exception e) {
+		        	
+		        	 response.setStatus(Defination.ERROR);
+		             response.setError_code(RespMsg.EC_INVALID_REQUEST);
+		             response.setMessage(RespMsg.getErrorMsg(RespMsg.EC_DB_EXCEPTION));
+		             logger.error("Response -> " + response.toString());
+		             return response;
+		        }
+		        logger.debug("Updated Symbol in mysql successfully");
+		        
+		        try {
+		        	// String pr_status = "";
+		            //String call_pr = '{Call SP_UPDATE_CUSTOM_SYM (?, ?, ?, ?, ?, ? )}';  
+		            
+		            params.put("exchange_key", j.getString("exchange"));
+		            params.put("segment_key", j.getString("segment"));
+		            params.put("security_key",  j.getString("symbol"));
+		            
+		           /* mssql_connection.call call_pr, params_pr, { status ->
+		                logger.debug("MSSQL SP_UPDATE_CUSTOM_SYM status > " + status)
+		                pr_status = status
+		            }*/
+		            if (pr_status.toString().startsWith("F")) {
+		            	response.setStatus(Defination.ERROR);
+			            response.setError_code(RespMsg.EC_DEFAULT_ERROR);
+			            response.setMessage(RespMsg.getErrorMsg("Something went wrong."));
+			            logger.error("Response -> " + response.toString());
+			            return response;
+		            }
+		        } catch (Exception e) {
+		        	response.setStatus(Defination.ERROR);
+		            response.setError_code(RespMsg.EC_DB_EXCEPTION);
+		            response.setMessage(RespMsg.getErrorMsg(RespMsg.EC_DB_EXCEPTION));
+		            logger.error("Response -> " + response.toString());
+		            return response;
+		        }
+	        	response.setStatus(Defination.SUCCESS);
+	            response.setError_code(RespMsg.EC_DEFAULT_SUCCESS);
+	            response.setMessage(RespMsg.getErrorMsg("Updated"));
+	            logger.error("Response -> " + response.toString());
+	            return response;
+		 }
+}

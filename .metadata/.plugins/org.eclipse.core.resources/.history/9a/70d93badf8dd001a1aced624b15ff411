@@ -1,0 +1,556 @@
+package rupeeseed.controllers.admin;
+
+import java.time.Duration;
+
+
+
+import java.time.Instant;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+
+import javax.sql.DataSource;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
+import java.security.SecureRandom;
+import java.security.spec.KeySpec;
+
+import io.micrometer.core.annotation.Timed;
+import rupeeseed.models.CommonRequest;
+import rupeeseed.models.CommonResponse;
+import rupeeseed.models.IntRequest;
+import rupeeseed.utility.Defination;
+import rupeeseed.utility.RespMsg;
+import rupeeseed.utility.RespMsg;
+import rupeeseed.utility.*;
+import java.util.HashMap;
+
+
+import java.util.ArrayList;
+
+/**
+ * Created by Yash Panchal on 10AUG-20.
+ */
+
+@RestController
+public class AdminController {
+    NamedParameterJdbcTemplate jdbcTemplate;
+    
+	@Autowired
+    DataSource dataSource;
+
+	private Logger logger = LoggerFactory.getLogger("rupeeseed");
+	
+	 @RequestMapping(value = "/clientGet", method = RequestMethod.POST)
+	 @Timed("rs") 
+	 public CommonResponse clientGet(@RequestBody CommonRequest inputPayload) throws JSONException {
+	        Instant before = Instant.now();
+	        logger.info("Entry in clientGet");
+	        jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+	        CommonResponse response = new CommonResponse();
+	        
+	        JSONObject j = new JSONObject(inputPayload.getData());
+	        JSONObject job = new JSONObject();
+	        logger.debug("Request > " + inputPayload.toString());
+	        
+	        
+	        if (j.getString("rs_status").equals(Defination.ERROR)) {
+	            response.setStatus(Defination.ERROR);
+	            response.setError_code(RespMsg.EC_INVALID_REQUEST);
+	            response.setMessage(RespMsg.getErrorMsg(RespMsg.EC_INVALID_REQUEST));
+	            logger.error("Response -> " + response.toString());
+	            return response;
+	        }
+	        
+	        IntRequest ir = new IntRequest();
+	        ir.setEntityId(j.getString("entity_id"));
+	        ir.setTokenId(j.getString("token_id"));
+	        ir.setSource(j.getString("source"));
+	        
+	        if (!j.has("client_id") || j.getString("client_id").equals("")) {
+	        	ir.setClientId("");
+	            /*response.setStatus(Defination.ERROR);
+	            response.setError_code(RespMsg.EC_INVALID_REQUEST);
+	            response.setMessage(RespMsg.getErrorMsg(RespMsg.EC_INVALID_REQUEST));
+	            logger.error("Response -> " + response.toString());
+	            return response;*/
+	        }else {
+	        	 ir.setClientId(j.getString("client_id"));
+	        }
+	        
+	        int row_cnt = 0, row_off = 0;
+	        if (!j.has("row_cnt") || j.getString("row_cnt").equals("")) {
+	            row_cnt = 25;
+	        } else {
+	            row_cnt = Integer.parseInt(j.getString("row_cnt").toString());
+	        }
+
+	        if (!j.has("row_off") || j.getString("row_off").equals("")) {
+	            row_off = 1;
+	        } else {
+	            row_off = Integer.parseInt(j.getString("row_offset").toString());
+	        }
+	        
+	        
+	        Map<String, String> params = new HashMap<>();
+	        params.put("count_from_key", j.getString("count_from_key"));
+	        params.put("count_to_key", j.getString("count_to_key"));
+	        
+	        SqlParameterSource namedParameters = new MapSqlParameterSource().addValues(params);
+	        List<Map<String, Object>> ClientQry = jdbcTemplate.queryForList("SELECT C.* FROM " +" (select @rn:=@rn + 1 AS ROW_NUM,A.* from " +" (SELECT ENTITY_CODE,ENTITY_NAME,ENTITY_TYPE,ENTITY_MANAGER_CODE,ENTITY_ADD_1,ENTITY_ADD_2,ENTITY_ADD_3," +" ENTITY_STATUS, ENTITY_PHONE,ENTITY_MOBILE,ENTITY_SUB_TYPE,ENTITY_CREATED_BY,ENTITY_CREATED_DATE," +" ENTITY_RISK_PROFILE,ENTITY_DOB,ENTITY_PAN,ENTITY_NSE_CODE,ENTITY_EMAIL,ENTITY_PINCODE,ENTITY_MCX_CODE," +" ENTITY_MANAGER_TYPE,ENTITY_OFFLINE_FLAG,ENTITY_SETTLOR,ENTITY_SETTLOR_DRV,ENTITY_SETTLOR_CURR,ENTITY_QL_PROFILE," +" ENTITY_DEFAULT_LIMIT,USER_EQU_NSE_LOC_CODE, USER_DRV_NSE_LOC_CODE,USER_EQU_BSE_LOC_CODE,USER_DRV_BSE_LOC_CODE," +" USER_LOGIN_CODE,USER_STATUS,USER_COM_MCX_LOC_CODE, USER_EXCH_ALLOWED , USER_CURR_NSE_LOC_CODE ," +" USER_REMARK1,USER_REMARK2,USER_REMARK3,USER_PRODUCT_ALLOWED,USER_PASSWORD_CNG_DATE,UM_SALT,USER_COM_NSE_LOC_CODE," +" USER_MF_NSE_LOC_CODE,USER_COM_BSE_LOC_CODE,USER_MF_BSE_LOC_CODE,USER_CURR_BSE_LOC_CODE,USER_NCDX_LOC_CODE" + " FROM USER_MASTER,ENTITY_MASTER WHERE USER_ENTITY_CODE=ENTITY_CODE AND ENTITY_CODE like '" + j.getString("client_id") + "%')A" + " CROSS JOIN (SELECT @rn:=0)B)C  WHERE ROW_NUM BETWEEN :count_from_key AND :count_to_key ORDER BY ENTITY_CODE;",namedParameters);
+	        logger.debug("GetClientQry Qry > " + ClientQry + "| params > " + params);
+
+	        JSONArray jarr = new JSONArray();
+	        
+	        for (Map row : ClientQry) {          
+	            job.put("entity_id", row.get("ENTITY_CODE"));
+	            job.put("entity_name", row.get("ENTITY_NAME"));
+	            job.put("client_type", row.get("bse_symbol"));
+	            job.put("entity_manager_code", row.get("bse_scrip_code"));
+	            job.put("entity_manager_type", row.get("exch_id"));
+	            job.put("address_line1", row.get("isin_code"));
+	            job.put("address_line2", row.get("security_source_type"));
+	            job.put("address_line3", row.get("qty"));
+	            job.put("entity_status", row.get("qty_utilized"));
+	            job.put("mobile_no", row.get("rem_qty"));
+	            job.put("last_traded_price", row.get("LTP"));
+	            job.put("entity_sub_type", 0);
+	            job.put("dob", row.get("cost_price"));
+	            job.put("pan", row.get("COLLATERAL"));
+	            job.put("email", row.get("market_value"));
+	            job.put("pincode", row.get("CUSTOM_SYMBOL"));
+	            job.put("ucc_code_cap", row.get("EXCH_INSTRUMENT_TYPE"));
+	            job.put("ucc_code_com", row.get("TOTAL_QUANTITY"));
+	            job.put("settlor_code_eq", row.get("XIRR"));
+	            job.put("settlor_code_dr", row.get("CAGR"));
+	            job.put("settlor_code_cr", row.get("NSE_TICK_SIZE"));
+	            job.put("settlor_code_cm", row.get("BSE_TICK_SIZE"));
+	            job.put("settlor_code_eq", row.get("XIRR"));
+	            job.put("exchange_allowed", row.get("CAGR"));
+	            job.put("product_allowed", row.get("NSE_TICK_SIZE"));
+	            job.put("login_id", row.get("BSE_TICK_SIZE"));
+	            job.put("ql_profile_id", row.get("CAGR"));
+	            job.put("risk_profile_id", row.get("NSE_TICK_SIZE"));
+	            job.put("remarks1", row.get("BSE_TICK_SIZE"));
+	            job.put("remarks2", row.get("XIRR"));
+	            job.put("remarks3", row.get("CAGR"));
+	            
+	            jarr.put(job);
+	        }
+	     
+	        response.setStatus(Defination.SUCCESS);
+            response.setError_code(RespMsg.EC_DEFAULT_SUCCESS);
+            response.setMessage(RespMsg.getErrorMsg(RespMsg.EC_DEFAULT_SUCCESS));
+            response.setData(jarr);
+	        logger.debug("Response > " + response.getStatus());
+	        return response;
+	 }
+	 @RequestMapping(value = "/clientAdd", method = RequestMethod.POST)
+	 @Timed("rs") 
+	 public CommonResponse clientAdd(@RequestBody CommonRequest inputPayload) throws JSONException {
+	        Instant before = Instant.now();
+	        logger.info("Entry in clientAdd");
+	        jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+	        CommonResponse response = new CommonResponse();
+	        
+	        JSONObject j = new JSONObject(inputPayload.getData());
+	        logger.debug("Request > " + inputPayload.toString());
+	        
+	        if (j.getString("rs_status").equals(Defination.ERROR)) {
+	            response.setStatus(Defination.ERROR);
+	            response.setError_code(RespMsg.EC_INVALID_REQUEST);
+	            response.setMessage(RespMsg.getErrorMsg(RespMsg.EC_INVALID_REQUEST));
+	            logger.error("Response -> " + response.toString());
+	            return response;
+	        }
+
+	        SimpleJdbcInsert simpleJdbcInsert1 = new SimpleJdbcInsert(dataSource);
+	        Map<String, String> params = new HashMap<String, String>();
+	        
+	        JSONArray jarr = new JSONArray();
+	        JSONObject job = new JSONObject();
+	        
+	        job.put("entity_id",j.getString("entity_id"));
+	        job.put("entity_name",j.getString("entity_name"));
+	        job.put("client_type",j.getString("client_type"));
+	        job.put("entity_manager_code",j.getString("entity_manager_code"));
+	        job.put("entity_manager_type",j.getString("entity_manager_type"));
+	        job.put("address_line1",j.getString("address_line1"));
+	        job.put("address_line2",j.getString("address_line2"));
+	        job.put("address_line3",j.getString("address_line3"));
+	        job.put("entity_status",j.getString("entity_status"));
+	        job.put("mobile_no",j.getString("mobile_no"));
+	        job.put("landline_no",j.getString("landline_no"));
+	        job.put("entity_sub_type",j.getString("entity_sub_type"));
+	        job.put("user_id",j.getString("user_id"));
+	        job.put("dob",j.getString("dob"));
+	        job.put("pan",j.getString("pan"));
+	        job.put("pincode",j.getString("pincode"));
+	        job.put("ucc_code_cap",j.getString("ucc_code_cap"));
+	        job.put("ucc_code_com",j.getString("ucc_code_com"));
+	        job.put("settlor_code_eq",j.getString("settlor_code_eq"));
+	        job.put("settlor_code_dr",j.getString("settlor_code_dr"));
+	        job.put("settlor_code_cr",j.getString("settlor_code_cr"));
+	        job.put("password",j.getString("password"));
+	        job.put("offline_allowed",j.getString("offline_allowed"));
+	        job.put("exchange_allowed",j.getString("exchange_allowed"));
+	        job.put("product_allowed",j.getString("product_allowed"));
+	        job.put("login_id",j.getString("login_id"));
+	        job.put("ql_profile_id",j.getString("ql_profile_id"));
+	        job.put("risk_profile_id",j.getString("risk_profile_id"));
+	        job.put("entity_limit",j.getString("entity_limit"));
+	        job.put("location_code_neq",j.getString("location_code_neq"));
+	        job.put("location_code_ndr",j.getString("location_code_ndr"));
+	        job.put("location_code_ncr",j.getString("location_code_ncr"));
+	        job.put("location_code_beq",j.getString("location_code_beq"));
+	        job.put("location_code_bdr",j.getString("location_code_bdr"));
+	        job.put("location_code_bcr",j.getString("location_code_bcr"));
+	        job.put("location_code_ncm",j.getString("location_code_ncm"));
+	        job.put("location_code_bcm",j.getString("location_code_bcm"));
+	        job.put("location_code_mcx",j.getString("location_code_mcx"));
+	        job.put("location_code_ncdex",j.getString("location_code_ncdex"));
+	        job.put("location_code_nmf",j.getString("location_code_nmf"));
+	        job.put("location_code_bmf",j.getString("location_code_bmf"));
+	        job.put("remarks1",j.getString("remarks1"));
+	        job.put("remarks2",j.getString("remarks2"));
+	        job.put("remarks3",j.getString("remarks3"));
+	        job.put("password_type",j.getString("password_type"));
+	        job.put("txn_password",j.getString("txn_password")); 
+	        
+    	    SqlParameterSource namedParameters = new MapSqlParameterSource().addValues(params);	  
+	        if (job.password_type.equals("RANDOM")) {
+	        	List<Map<String, Object>> get_pass_qry = jdbcTemplate.queryForList("SELECT FN_RANDOM_PASSWORD(10) PASS FROM dual;",namedParameters);
+	            logger.debug("QUERY---addStr.get_pass_qry---   " + get_pass_qry);
+
+	        } else { //(addStr.password_type.equals("DEFAULT")) {
+	        	List<Map<String, Object>> get_pass_qry = jdbcTemplate.queryForList("SELECT PARAM_VALUE PASS FROM sys_parameter WHERE PARAM_NAME='default_password';",namedParameters);
+	            logger.debug("QUERY---addStr.get_pass_qry---   " + get_pass_qry);
+	        }
+	       //hashpassword
+	        
+	        SecureRandom random = new SecureRandom();
+	        byte[] salt = new byte[16];
+	        random.nextBytes(salt);
+	        
+	        KeySpec  spec = new PBEKeySpec(password.toCharArray(), salt, 65536, 128);
+	        SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+	        
+	        byte[] hash = factory.generateSecret(spec).getEncoded();
+
+	        
+	        if (!j.has("user_id") && j.getString("user_id").equals("")) {
+	            job.user_id = j.getString("user_id");
+	        }
+
+	        try {	            	
+	        	List<Map<String, Object>> chk_qry1 = jdbcTemplate.queryForList("select count(*) as CNT from USER_MASTER where USER_LOGIN_CODE = ${job.login_id};",namedParameters);
+		        logger.debug("----chk_qry1-----" + chk_qry1);
+		        
+		        if (chk_qry1.CNT[0] !=0) {
+		        	response.setStatus(Defination.ERROR);
+		            response.setError_code(RespMsg.EC_ADMIN_ERROR);
+		            response.setMessage(RespMsg.getErrorMsg(RespMsg.EC_INVALID_REQUEST));
+		            logger.error("Response -> " + response.toString());
+		            return response;
+		        }
+	        }catch (Exception e) {
+	        	response.setStatus(Defination.ERROR);
+	            response.setError_code(RespMsg.EC_ADMIN_ERROR);
+	            response.setMessage(RespMsg.getErrorMsg("Something went wrong."));
+	            logger.error("Response -> " + response.toString());
+	            return response;
+	        }   
+	        
+            try {
+	        	    ArrayList<String> arrl = new ArrayList<String>();
+	        	   
+	        	    arrl.add(j.getString("entity_id"));
+					arrl.add(j.getString("entity_name"));
+					arrl.add(j.getString("client_type"));
+					arrl.add(j.getString("entity_manager_code"));
+					arrl.add(j.getString("address_line1"));
+					arrl.add(j.getString("address_line2"));
+					arrl.add(j.getString("address_line3"));
+					arrl.add(j.getString("entity_status"));
+					arrl.add(j.getString("landline_no"));
+					arrl.add(j.getString("mobile_no"));
+					arrl.add(j.getString("entity_sub_type"));
+					arrl.add(j.getString("user_id"));
+					arrl.add(j.getString("dob"));
+					arrl.add(j.getString("pan"));
+					arrl.add(j.getString("email"));
+					arrl.add(j.getString("pincode"));
+					arrl.add(j.getString("ucc_code_cap"));
+					arrl.add(j.getString("ucc_code_com"));
+					arrl.add(j.getString("entity_manager_type"));
+					arrl.add(j.getString("settlor_code_eq"));
+					arrl.add(j.getString("settlor_code_dr"));
+					arrl.add(j.getString("settlor_code_cr"));
+					arrl.add(j.getString("settlor_code_cm"));
+					arrl.add(j.getString("ql_profile_id"));
+					arrl.add(j.getString("entity_limit"));
+					arrl.add(j.getString("risk_profile_id"));
+					arrl.add(j.getString("login_id"));
+					arrl.add(j.getString("password"));
+					arrl.add(j.getString("txn_password"));
+					arrl.add(j.getString("exchange_allowed"));
+					arrl.add(j.getString("product_allowed"));
+					arrl.add(j.getString("product_allowed"));
+					arrl.add(j.getString("remarks1"));
+					arrl.add(j.getString("remarks2"));
+					arrl.add(j.getString("remarks3"));
+				
+         
+	            	String resp;
+	                logger.debug("PR_EDIT_ENTITY_MASTER INSERT > " + params);
+	                String prResp ="call PR_EDIT_ENTITY_MASTER (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,' '?,?,?,?,?,?,?)";
+	                execute(prResp);
+	                
+	                logger.debug("prResp > " + prResp);
+	                resp = prResp;
+	                logger.debug("resp > " + resp);
+
+		            if (resp == "S") {
+		            	response.setStatus(Defination.SUCCESS);
+			            response.setError_code(RespMsg.EC_ADMIN_SUCCESS);
+			            response.setMessage(RespMsg.getErrorMsg("Client added successfully"));
+			            logger.info("Response > " + response.getStatus());
+			            return response;	
+			            logger.debug("Response -> " + response.toString());
+		            
+			            try {
+			                /*************REDIS PUBLISHING************/
+			
+			                JedisPool pool = Defination.pool;
+			                Jedis jedis = pool.getResource();
+			                
+			                if (job.settlor_code_eq == '0') {
+			                	job.settlor_code_eq = "000000000000";
+			                }
+			                if (job.settlor_code_dr == '0') {
+			                    job.settlor_code_dr = "000000000000";
+			                }
+			                if (job.settlor_code_cr == '0') {
+			                	job.settlor_code_cr = "000000000000";
+			                }
+			                
+			                String key =  "${addStr.entity_id}|${addStr.entity_name}|${addStr.pan}|${addStr.email}|${addStr.mobile_no}|" +
+			                        "${addStr.landline_no}|${addStr.entity_sub_type}|${addStr.settlor_code_eq}|${addStr.settlor_code_dr}|${addStr.settlor_code_cr}"
+			                logger.debug("key parameters : " + key)
+			                def channel = "CLIENTADD"
+			                logger.debug("PUBLISH CHANNEL >  " + channel)
+			                def publish = jedis.publish(channel, key)
+			                logger.debug("PUBLISH > " + publish)
+			                jedis.close()
+			                return
+			            }catch (Exception e){
+			                StringWriter errors = new StringWriter()
+			                e.printStackTrace(new PrintWriter(errors))
+			                logger.error("Got REDIS Exception [" + errors.toString() + "] here")
+			                logger.error("REDIS Exception trying to reconnect-> " + e)
+			                if (!miscService.RedisConnection(logger)) {
+			                    logger.error("REDIS Exception -> " + e);
+			                    return
+			                }
+			            }
+		            }else {
+		            	response.setStatus(Defination.ERROR);
+			            response.setError_code(RespMsg.EC_ADMIN_ERROR);
+			            response.setMessage(RespMsg.getErrorMsg(RespMsg.EC_ADMIN_ERROR));
+			            logger.error("Response -> " + response.toString());
+			            return response;
+		            }               	         	
+            }catch (Exception e) {
+            	response.setStatus(Defination.ERROR);
+	            response.setError_code(RespMsg.EC_ADMIN_ERROR);
+	            response.setMessage(RespMsg.getErrorMsg(RespMsg.EC_ADMIN_ERROR));
+	            logger.error("Response -> " + response.toString());
+	            return response;
+            }   
+	 }
+
+	 @RequestMapping(value = "/clientUpdate", method = RequestMethod.POST)
+	 @Timed("rs") 
+	 public CommonResponse clientUpdate(@RequestBody CommonRequest inputPayload) throws JSONException {
+		 	Instant before = Instant.now();
+	        logger.info("Entry in clientUpdate");
+	        jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+	        CommonResponse response = new CommonResponse();
+	        
+	        JSONObject j = new JSONObject(inputPayload.getData());
+	        logger.debug("Request > " + inputPayload.toString());
+	        
+	        if (j.getString("rs_status").equals(Defination.ERROR)) {
+	            response.setStatus(Defination.ERROR);
+	            response.setError_code(RespMsg.EC_INVALID_REQUEST);
+	            response.setMessage(RespMsg.getErrorMsg(RespMsg.EC_INVALID_REQUEST));
+	            logger.error("Response -> " + response.toString());
+	            return response;
+	        }
+	        
+	        IntRequest ir = new IntRequest();
+	        ir.setEntityId(j.getString("entity_id"));
+	        ir.setTokenId(j.getString("token_id"));
+	        ir.setSource(j.getString("source"));
+	        
+	        SimpleJdbcInsert simpleJdbcInsert = new SimpleJdbcInsert(dataSource);
+	        Map<String, String> params = new HashMap<>();
+	        
+	        JSONArray jarr = new JSONArray();
+	        JSONObject job = new JSONObject();
+	        
+	        
+	        job.put("entity_id",j.getString("entity_id"));
+	        job.put("entity_name",j.getString("entity_name"));
+	        job.put("client_type",j.getString("client_type"));
+	        job.put("entity_manager_code",j.getString("entity_manager_code"));
+	        job.put("entity_manager_type",j.getString("entity_manager_type"));
+	        job.put("address_line1",j.getString("address_line1"));
+	        job.put("address_line2",j.getString("address_line2"));
+	        job.put("address_line3",j.getString("address_line3"));
+	        job.put("entity_status",j.getString("entity_status"));
+	        job.put("mobile_no",j.getString("mobile_no"));
+	        job.put("landline_no",j.getString("landline_no"));
+	        job.put("entity_sub_type",j.getString("entity_sub_type"));
+	        job.put("user_id",j.getString("user_id"));
+	        job.put("dob",j.getString("dob"));
+	        job.put("pan",j.getString("pan"));
+	        job.put("pincode",j.getString("pincode"));
+	        job.put("ucc_code_cap",j.getString("ucc_code_cap"));
+	        job.put("ucc_code_com",j.getString("ucc_code_com"));
+	        job.put("settlor_code_eq",j.getString("settlor_code_eq"));
+	        job.put("settlor_code_dr",j.getString("settlor_code_dr"));
+	        job.put("settlor_code_cr",j.getString("settlor_code_cr"));
+	        job.put("password",j.getString("password"));
+	        job.put("offline_allowed",j.getString("offline_allowed"));
+	        job.put("exchange_allowed",j.getString("exchange_allowed"));
+	        job.put("product_allowed",j.getString("product_allowed"));
+	        job.put("login_id",j.getString("login_id"));
+	        job.put("ql_profile_id",j.getString("ql_profile_id"));
+	        job.put("risk_profile_id",j.getString("risk_profile_id"));
+	        job.put("entity_limit",j.getString("entity_limit"));
+	        job.put("location_code_neq",j.getString("location_code_neq"));
+	        job.put("location_code_ndr",j.getString("location_code_ndr"));
+	        job.put("location_code_ncr",j.getString("location_code_ncr"));
+	        job.put("location_code_beq",j.getString("location_code_beq"));
+	        job.put("location_code_bdr",j.getString("location_code_bdr"));
+	        job.put("location_code_bcr",j.getString("location_code_bcr"));
+	        job.put("location_code_ncm",j.getString("location_code_ncm"));
+	        job.put("location_code_bcm",j.getString("location_code_bcm"));
+	        job.put("location_code_mcx",j.getString("location_code_mcx"));
+	        job.put("location_code_ncdex",j.getString("location_code_ncdex"));
+	        job.put("location_code_nmf",j.getString("location_code_nmf"));
+	        job.put("location_code_bmf",j.getString("location_code_bmf"));
+	        job.put("remarks1",j.getString("remarks1"));
+	        job.put("remarks2",j.getString("remarks2"));
+	        job.put("remarks3",j.getString("remarks3"));
+	        job.put("password_type",j.getString("password_type"));
+	        job.put("txn_password",j.getString("txn_password")); 
+	        
+	        SqlParameterSource namedParameters = new MapSqlParameterSource().addValues(params);	  
+	        if (job.password_type.equals("RANDOM")) {
+	        	List<Map<String, Object>> get_pass_qry = jdbcTemplate.queryForList("SELECT FN_RANDOM_PASSWORD(10) PASS FROM dual;",namedParameters);
+	            logger.debug("QUERY---addStr.get_pass_qry---   " + get_pass_qry);
+	        } else { //(addStr.password_type.equals("DEFAULT")) {
+	        	List<Map<String, Object>> get_pass_qry = jdbcTemplate.queryForList("SELECT PARAM_VALUE PASS FROM sys_parameter WHERE PARAM_NAME='default_password';",namedParameters);
+	            logger.debug("QUERY---addStr.get_pass_qry---   " + get_pass_qry);
+	        }
+	        
+	        /*String salt1 = "NXX(}";
+	        String pass1 = dataService.hashPassword(salt1.toString(), get_pass_qry.PASS[0]);
+	        job.password = dataService.hashPassword5(salt1.toString(), pass1)
+	        job.txn_password = "d41d8cd98f00b204e9800998ecf8427e";*/	
+	        
+	        int strength = 10; // work factor of bcrypt
+	        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(strength, new SecureRandom());
+	        String pass1 = bCryptPasswordEncoder.encode(plainPassword);
+	        
+	        if (!j.has("user_id") || j.getString("user_id").equals("")) {
+	            job.user_id = j.getString("user_id");
+	        }
+	        try {
+	        	  ArrayList<String> arrl = new ArrayList<String>();
+	        	  
+	        	    arrl.add(j.getString("entity_id"));
+					arrl.add(j.getString("entity_name"));
+					arrl.add(j.getString("client_type"));
+					arrl.add(j.getString("entity_manager_code"));
+					arrl.add(j.getString("address_line1"));
+					arrl.add(j.getString("address_line2"));
+					arrl.add(j.getString("address_line3"));
+					arrl.add(j.getString("entity_status"));
+					arrl.add(j.getString("landline_no"));
+					arrl.add(j.getString("mobile_no"));
+					arrl.add(j.getString("entity_sub_type"));
+					arrl.add(j.getString("user_id"));
+					arrl.add(j.getString("dob"));
+					arrl.add(j.getString("pan"));
+					arrl.add(j.getString("email"));
+					arrl.add(j.getString("pincode"));
+					arrl.add(j.getString("ucc_code_cap"));
+					arrl.add(j.getString("ucc_code_com"));
+					arrl.add(j.getString("entity_manager_type"));
+					arrl.add(j.getString("settlor_code_eq"));
+					arrl.add(j.getString("settlor_code_dr"));
+					arrl.add(j.getString("settlor_code_cr"));
+					arrl.add(j.getString("settlor_code_cm"));
+					arrl.add(j.getString("ql_profile_id"));
+					arrl.add(j.getString("entity_limit"));
+					arrl.add(j.getString("risk_profile_id"));
+					arrl.add(j.getString("login_id"));
+					arrl.add(j.getString("password"));
+					arrl.add(j.getString("txn_password"));
+					arrl.add(j.getString("exchange_allowed"));
+					arrl.add(j.getString("product_allowed"));
+					arrl.add(j.getString("product_allowed"));
+					arrl.add(j.getString("remarks1"));
+					arrl.add(j.getString("remarks2"));
+					arrl.add(j.getString("remarks3"));
+  
+		        	String resp;
+		        	logger.debug("PR_EDIT_ENTITY_MASTER UPDATE > " + params);
+		        	String prResp ="call PR_EDIT_ENTITY_MASTER(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,' +'?,?,?,?,?,?,?)}'";
+		        	execute(prResp);
+		            logger.debug("prResp > " + prResp)
+		            resp = prResp
+		            logger.debug("resp > " + resp)
+		        	if (resp == "S") {
+		            	response.setStatus(Defination.SUCCESS);
+			            response.setError_code(RespMsg.EC_ADMIN_SUCCESS);
+			            response.setMessage(RespMsg.getErrorMsg("Client added successfully"));
+			            logger.info("Response > " + response.getStatus());
+			            return response; 
+		        	}else {
+		            	response.setStatus(Defination.ERROR);
+			            response.setError_code(RespMsg.EC_ADMIN_ERROR);
+			            response.setMessage(RespMsg.getErrorMsg(RespMsg.EC_ADMIN_ERROR));
+			            logger.error("Response -> " + response.toString());
+			            return response;
+		        	}      
+	        }catch (Exception e) {
+	        	response.setStatus(Defination.ERROR);
+	            response.setError_code(RespMsg.EC_ADMIN_ERROR);
+	            response.setMessage(RespMsg.getErrorMsg(RespMsg.EC_ADMIN_ERROR));
+	            logger.error("Response -> " + response.toString());
+	            return response;	        	
+	        }
+	 }
+}
+
